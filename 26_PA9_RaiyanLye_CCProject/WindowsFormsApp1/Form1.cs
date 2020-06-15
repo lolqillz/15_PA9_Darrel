@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        double Malaysian = 3.01;
         public Form1()
         {
             InitializeComponent();
@@ -69,7 +70,23 @@ namespace WindowsFormsApp1
                 {
                     decimal amount = System.Convert.ToDecimal(txt_amount.Text);
                     decimal converted_amount = amount * 81.97m;
-                    txt_converted.Text = "" + converted_amount.ToString() + "Yen";
+                    txt_converted.Text = "" + converted_amount.ToString() + " Yen";
+                }
+
+                catch (FormatException)
+                {
+                    txt_amount.Clear();
+                    txt_converted.Clear();
+                    txt_amount.Text = "Please enter a valid amount";
+                }
+            }
+            else if (rb_Ringgit.Checked == true)
+            {
+                try
+                {
+                    decimal amount = System.Convert.ToDecimal(txt_amount.Text);
+                    decimal converted_amount = amount * 3.01m;
+                    txt_converted.Text = "" + converted_amount.ToString() + " Ringgit";
                 }
 
                 catch (FormatException)
@@ -89,6 +106,11 @@ namespace WindowsFormsApp1
         }
 
         private void rb_us_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Rb_Ringgit_CheckedChanged(object sender, EventArgs e)
         {
 
         }
